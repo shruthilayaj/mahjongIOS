@@ -114,10 +114,21 @@ enum IndecentExposure: Error {
     case differentTiles, tooFewTiles, tooManyTiles
 }
 
+struct LineSection {
+    let ranks: [Int]
+    let suit: Int
+    
+    init(_ ranks: [Int], _ suit: Int) {
+        self.ranks = ranks
+        self.suit = suit
+    }
+}
+
 struct Game {
     var possibleLines: [Line] = []
     var deck: [Tile] = []
     var hands: [Hand] = []
+    var discardedTile: Tile? = nil
     
     init() {
         possibleLines = generateLines()
@@ -222,6 +233,121 @@ struct Game {
         }
     }
     
+    func validateAgainstLine(cardLine: [LineSection], line: Line) -> Bool {
+        var numJokers = 0
+        let joker = Tile(Rank.joker, Suit.joker)
+        for tile in line.tiles {
+            if tile == joker {
+                numJokers += 1
+            }
+        }
+        
+        let suitCombinations = [
+            [Suit.bam, Suit.crak, Suit.dot],
+            [Suit.dot, Suit.bam, Suit.crak],
+            [Suit.crak, Suit.dot, Suit.bam],
+            [Suit.crak, Suit.bam, Suit.dot],
+            [Suit.dot, Suit.crak, Suit.bam],
+            [Suit.bam, Suit.dot, Suit.crak],
+        ]
+        for suitCombination in suitCombinations {
+            var tempLine = line
+            var matchTile = true
+            var tempNumJokers = numJokers
+            for section in cardLine {
+//                print("Section \(section)")
+                let (rank, suit) = (section.ranks, section.suit)
+//                var tiles: [Tile] = []
+                for r in rank {
+                    var tile: Tile
+                    if suit < 3 {
+                        let suitEnum = suitCombination[suit]
+                        tile = Tile(Rank(rawValue: r)!, suitEnum)
+                    } else {
+                        tile = Tile(Rank(rawValue: r)!, Suit(rawValue: suit)!)
+                    }
+                    if let index = tempLine.tiles.firstIndex(of: tile) {
+//                            print("Removing tile \(tile)")
+                        tempLine.tiles.remove(at: index)
+                    } else {
+                        if rank.count > 2 && tempNumJokers > 0 {
+                            tempLine.tiles.remove(at: tempLine.tiles.firstIndex(of: joker)!)
+                            tempNumJokers -= 1
+                        } else {
+//                            print("Tile \(tile) not found")
+                            matchTile = false
+                            break
+                        }
+                    }
+                }
+                
+                
+                if !matchTile {
+                    break
+                }
+                
+                if tempLine.tiles.count == 0 {
+                    return true
+                }
+                
+            }
+        }
+        return false
+    }
+    
+    func getCard(tiles: [Tile]) -> [[LineSection]] {
+        var cardLines = [
+            [LineSection([0, 0, 0, 0], 3), LineSection([2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 0), LineSection([8, 8, 8, 8], 0)],
+            [LineSection([2, 2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 1), LineSection([8, 8, 8], 1), LineSection([10, 10, 10, 10], 2)],
+            [LineSection([0, 0, 0, 0], 3), LineSection([4, 4, 4, 4], 0), LineSection([6, 6, 6, 6], 1), LineSection([2, 4], 2)],
+        ]
+        
+        var minNum = 10
+        for tile in tiles {
+            let rankInt = tile.rank.rawValue
+            if rankInt > 0 && rankInt < minNum {
+                minNum = rankInt
+            }
+        }
+        if minNum <= 7 {
+            let n1 = minNum
+            let n2 = minNum + 1
+            let n3 = minNum + 2
+            cardLines.append([
+                LineSection([0, 0, 0, 0], 3), LineSection([n1, n1, n1, n1], 0), LineSection([n2, n2], 1), LineSection([n3, n3, n3, n3], 2),
+            ])
+            cardLines.append([
+                LineSection([n1, n1, n1], 0), LineSection([n2, n2, n2], 0), LineSection([n1, n1, n1], 1), LineSection([n2, n2, n2], 1), LineSection([n3, n3], 2),
+            ])
+        }
+        
+        return cardLines
+    }
+    
+    func validateAgainstCard(line: Line) -> Bool {
+        let cardLines = getCard(tiles: line.tiles)
+        for cardLine in cardLines {
+            let pass = validateAgainstLine(cardLine: cardLine, line: line)
+            if pass {
+                return  true
+            }
+        }
+        return false
+    }
+    
+//    func validateExposedTiles(exposedTiles: [[Tile]]) -> Bool {
+//        var exposedSections = []
+//        for exposedGroup in exposedTiles {
+//            let tile = exposedGroup.first(where: {$0 != joker})!
+//
+//        }
+//        let staticLines = getCard(tiles: [])
+//        for staticLine in staticLines {
+//
+//        }
+//
+//    }
+    
     mutating func play() {
         var index = 0
         while deck.count > 0 {
@@ -238,6 +364,7 @@ struct Game {
                             if let safeIndex = Int(input) {
                                 let tile = hand.tiles[Int(safeIndex)]
                                 print("Discarding \(tile)...")
+                                discardedTile = tile
                                 discardTile(hand: hand, tile: tile)
                             } else {
                                 throw GameError.invalidDiscardIndex
@@ -246,17 +373,19 @@ struct Game {
                             print(error)
                         }
                     }
-                case "E":
-                    print("Please select decent tiles to expose ...")
+                case "C":
+                    print("Please select decent tiles to expose...")
                     if let input = readLine() {
                         let tileIndices = input.split(separator: ",")
-                        let tiles = tileIndices.map({hand.tiles[Int($0)!]})
+                        var tiles = tileIndices.map({hand.tiles[Int($0)!]})
+                        tiles.append(discardedTile!)
                         do {
                             try expose(hand: hand, tiles: tiles)
                         } catch {
                             print(error)
                         }
                     }
+                    
 
                 default:
                     print("invalid command ya fkn idiot")
@@ -267,7 +396,8 @@ struct Game {
     }
     
     func expose(hand: Hand, tiles: [Tile]) throws {
-        if !tiles.allSatisfy({$0 == tiles[0]}) {
+        let joker = Tile(Rank.joker, Suit.joker)
+        if !tiles.allSatisfy({$0 == tiles[0] || $0 == joker}) {
             throw IndecentExposure.differentTiles
         }
         else if tiles.count < 3 {
@@ -279,65 +409,35 @@ struct Game {
             if let i = hand.tiles.firstIndex(of: tile) {
                 hand.exposedTiles.append(tile)
                 hand.tiles.remove(at: i)
+                
             }
         }
     }
 }
 
-enum Rule: Int {
-    case anyOneSuit, anyTwoSuits, anyThreeSuits, anyRun,
 
-    func simpleDescription() -> String {
-        switch self {
-            case .anyOneSuit:
-                return "anyOneSuit"
-            case .anyTwoSuits:
-                return "anyTwoSuits"
-            case .anyThreeSuits:
-                return "anyThreeSuits"
-            case .anyRun:
-                return "anyRun"
-        }
-    }
-}
+var lineRules = Game()
+let flower = Tile(Rank.flower, Suit.flower)
+let twoCrak = Tile(Rank.two, Suit.crak)
+let fourCrak = Tile(Rank.four, Suit.crak)
+let sixCrak = Tile(Rank.six, Suit.crak)
+let eightCrak = Tile(Rank.eight, Suit.crak)
+let sixBam = Tile(Rank.six, Suit.bam)
+let eightBam = Tile(Rank.eight, Suit.bam)
+let dotDragon = Tile(Rank.dragon, Suit.dot)
 
-struct section2468 {
-    let numFlower: Int
-    let num2: Int
-    let num4: Int
-    let num6: Int
-    let num8: Int
-    let numDragon: Int
-    
-    let suitsMatch2: [Int]
-    let suitsMatch4: [Int]
-    let suitsMatch6: [Int]
-    let suitsMatch8: [Int]
-    let suitsMatchDragon: [Int]
-    
-    let suitsDiff2: [Int]
-    let suitsDiff4: [Int]
-    let suitsDiff6: [Int]
-    let suitsDiff8: [Int]
-    let suitsDiffDragon: [Int]
-    
-    func match(tiles: [Tile]) -> Bool {
-        
-    }
-}
+let twoDot = Tile(Rank.two, Suit.dot)
+let fourDot = Tile(Rank.four, Suit.dot)
+let joker = Tile(Rank.joker, Suit.joker)
+let productLine = Line(tiles: [joker, flower, joker, flower, fourCrak, fourCrak, fourCrak, fourCrak, sixBam, sixBam, sixBam, sixBam, twoDot, fourDot])
+var pass = lineRules.validateAgainstCard(line: productLine)
+print(pass)
+let badProductLine = Line(tiles: [flower, flower, flower, flower, fourCrak, fourCrak, fourCrak, fourCrak, sixBam, sixBam, sixBam, sixBam, twoDot, joker])
+pass = lineRules.validateAgainstCard(line: badProductLine)
+print(pass)
 
-let line1 = section2468(numFlower: 4, num2: 1, num4: 2, num6: 3, num8: 4, numDragon: 0, suitsMatch2: [4, 6, 8], suitsMatch4: [2, 6, 8], suitsMatch6: [2, 4, 8], suitsMatch8: [2, 4, 6], suitsMatchDragon: [], suitsDiff2: [], suitsDiff4: [], suitsDiff6: [], suitsDiff8: [], suitsDiffDragon: [])
-
-struct LineRules {
-    
-    func getTilesForLine(cardLine: [String], rules: [Rule]) -> Bool {
-        <#function body#>
-    }
-    
-    func validateAgainstCard(line: Line) -> Bool {
-        cardLines = [[]]
-    }
-}
-
-var game = Game()
-game.play()
+let fiveBam = Tile(Rank.five, Suit.bam)
+let goodRunHand = Line(tiles: [flower, flower, flower, flower, fourDot, fourDot, fourDot, fourDot, fiveBam, fiveBam, sixCrak, sixCrak, sixCrak, sixCrak])
+print(lineRules.validateAgainstCard(line: goodRunHand))
+let badRunHand = Line(tiles: [flower, flower, flower, flower, fourDot, fourDot, fourDot, fourDot, fiveBam, fiveBam, sixCrak, sixCrak, sixCrak, twoDot])
+print(lineRules.validateAgainstCard(line: badRunHand))
