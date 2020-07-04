@@ -1,134 +1,30 @@
+//
+//  Game.swift
+//  mahjongIOS
+//
+//  Created by Shruthilaya Jaganathan on 2020-07-01.
+//  Copyright © 2020 Shruthilaya Jaganathan. All rights reserved.
+//
+
 import Foundation
 
-
-enum Suit: Int {
-    case bam, crak, dot, flower, wind, joker
-
-    func simpleDescription() -> String {
-        switch self {
-            case .crak:
-                return "crak"
-            case .bam:
-                return "bam"
-            case .dot:
-                return "dot"
-            case .flower:
-                return "flower"
-            case .joker:
-                return "joker"
-            case .wind:
-                return "wind"
-        }
-    }
-}
-
-enum Rank: Int {
-    case flower = 0
-    case one, two, three, four, five, six, seven, eight, nine, dragon, north, east, west, south, joker
-
-    func simpleDescription() -> String {
-        switch self {
-            case .flower:
-                return "flower"
-            case .one:
-                return "one"
-            case .two:
-                return "two"
-            case .three:
-                return "three"
-            case .four:
-                return "four"
-            case .five:
-                return "five"
-            case .six:
-                return "six"
-            case .seven:
-                return "seven"
-            case .eight:
-                return "eight"
-            case .nine:
-                return "nine"
-            case .dragon:
-                return "dragon"
-            case .north:
-                return "north"
-            case .east:
-                return "east"
-            case .west:
-                return "west"
-            case .south:
-                return "south"
-            case .joker:
-                return "joker"
-        }
-    }
-}
-
-struct Tile: CustomStringConvertible, Equatable {
-    let rank: Rank
-    let suit: Suit
-
-    var description: String {
-        return "\(rank.simpleDescription()) \(suit.simpleDescription())"
-    }
-    
-    init(_ rank: Rank, _ suit: Suit) {
-        self.rank = rank
-        self.suit = suit
-    }
-    
-    static func == (lhs: Tile, rhs: Tile) -> Bool {
-        return (lhs.rank == rhs.rank) && (lhs.suit == rhs.suit)
-    }
-}
-
-struct Line {
-    var tiles: [Tile]  // (repeating count: 14)
-    
-}
-
-class Hand: CustomStringConvertible {
-    var tiles: [Tile] = []
-    var exposedTiles: [Tile] = []
-    
-    func isValidForMahJong() -> Bool {
-        if tiles.count != 14 {
-            return false
-        }
-        else {
-            return true
-        }
-    }
-    
-    var description: String {
-        return "Tiles - \(tiles) \n Exposed Tiles - \(exposedTiles)"
-    }
-    
-}
-
 enum GameError: Error {
-    case invalidDiscardIndex, invalidExchangeTile
+    case invalidDiscardIndex, invalidExchangeTile, noMatchingLines
 }
 
 enum IndecentExposure: Error {
     case differentTiles, tooFewTiles, tooManyTiles, noMatchingLines
 }
 
-struct LineSection {
-    let ranks: [Int]
-    let suit: Int
-    
-    init(_ ranks: [Int], _ suit: Int) {
-        self.ranks = ranks
-        self.suit = suit
-    }
-}
+
 
 struct Game {
     var possibleLines: [Line] = []
     var deck: [Tile] = []
     var hands: [Hand] = []
     var discardedTile: Tile? = nil
+    var delegate: GameDelegate?
+    var currentPlayer = 0
     
     init() {
         possibleLines = generateLines()
@@ -137,6 +33,15 @@ struct Game {
         }
         deck = generateTiles()
         deal()
+        let flower = Tile(Rank.flower, Suit.flower)
+        let twoCrak = Tile(Rank.two, Suit.crak)
+        let eightCrak = Tile(Rank.eight, Suit.crak)
+        let sixDot = Tile(Rank.six, Suit.dot)
+        let fourDot = Tile(Rank.four, Suit.dot)
+        let joker = Tile(Rank.joker, Suit.joker)
+        let southWind = Tile(Rank.south, Suit.wind)
+        let initialTiles = [flower, flower, fourDot, fourDot, fourDot, sixDot, sixDot, joker, twoCrak, twoCrak, eightCrak, southWind, southWind, joker]
+        hands[0].tiles = initialTiles
     }
     
     func generateLines() -> [Line] {
@@ -184,15 +89,19 @@ struct Game {
         // TODO - add jokers
     }
     
-    func sortTiles(tiles: [Tile]) -> [Tile] {
+    func sortTiles(tiles: [Tile], sortByRank: Bool = true) -> [Tile] {
         // 2 crak, 3 bam
         let sortedTiles = tiles.sorted(by: {(tile1: Tile, tile2: Tile) -> Bool in
-            if (tile1.rank.rawValue < tile2.rank.rawValue) {
+            let value1 = sortByRank ? tile1.rank.rawValue : tile1.suit.rawValue
+            let value2 = sortByRank ? tile2.rank.rawValue : tile2.suit.rawValue
+            let tiebreakValue1 = sortByRank ? tile1.suit.rawValue : tile1.rank.rawValue
+            let tiebreakValue2 = sortByRank ? tile2.suit.rawValue : tile2.rank.rawValue
+            if (value1 < value2) {
                 return true
-            } else if (tile1.rank.rawValue > tile2.rank.rawValue) {
+            } else if (value1 > value2) {
                 return false
             } else {
-                if (tile1.suit.rawValue < tile2.suit.rawValue) {
+                if (tiebreakValue1 < tiebreakValue2) {
                     return true
                 } else {
                     return false
@@ -200,6 +109,11 @@ struct Game {
             }
         })
         return sortedTiles
+    }
+    
+    mutating func sortHand(sortByRank: Bool) {
+        let hand = hands[currentPlayer]
+        hand.tiles = sortTiles(tiles: hand.tiles, sortByRank: sortByRank)
     }
     
     func matchLine(hand: Hand) -> Bool {
@@ -214,34 +128,69 @@ struct Game {
     
     mutating func deal() {
         deck.shuffle()
-        for _ in 0...3 {
+        for i in 0...3 {
             let hand = Hand()
             for _ in 0...12 {
+                hand.tiles.append(deck.popLast()!)
+            }
+            if i == 0 {
                 hand.tiles.append(deck.popLast()!)
             }
             hands.append(hand)
         }
     }
     
-    mutating func pickTile(hand: Hand) {
+    mutating func pickTile(hand: Hand){
         let tile = deck.popLast()!
         print("Picking up \(tile)")
         hand.tiles.append(tile)
     }
     
-    func discardTile(hand: Hand, tile: Tile) {
-        if let index = hand.tiles.firstIndex(of: tile) {
-            hand.tiles.remove(at: index)
+    mutating func discardTile(tile: Tile) {
+        if let index = hands[currentPlayer].tiles.firstIndex(of: tile) {
+            print("discardTile - \(tile), \(currentPlayer)")
+            discardedTile = hands[currentPlayer].tiles.remove(at: index)
+            let isComputerDiscarding = currentPlayer != 0
+            delegate?.didDiscardTile(tile: tile, isComputerDiscarding: isComputerDiscarding)
+
+//            currentPlayer = (currentPlayer + 1)%4
+            if !isComputerDiscarding {
+                currentPlayer = (currentPlayer + 1)%4
+                print("calling discardRandomTile tile from discardTile for \(currentPlayer)")
+                discardRandomTile()
+            }
         }
     }
     
-    func validateAgainstLine(cardLine: [LineSection], line: Line, forExposed: Bool = false) -> Bool {
+    mutating func discardRandomTile() {
+        pickTile(hand: hands[currentPlayer])
+        discardTile(tile: hands[currentPlayer].tiles.randomElement()!)
+    }
+    
+    mutating func passDiscardedTile() {
+        let lastComputerDiscarding = currentPlayer == 3
+        currentPlayer = (currentPlayer + 1)%4
+        if !lastComputerDiscarding {
+            print("calling discardRandomTile tile from passDiscardedTile")
+            discardRandomTile()
+        } else {
+            pickTile(hand: hands[currentPlayer])
+            delegate?.didPickTile()
+        }
+        
+    }
+    
+    func validateAgainstLine(cardLine: CardLine, tiles: [Tile], forExposed: Bool = false) -> Bool {
         var numJokers = 0
         let joker = Tile(Rank.joker, Suit.joker)
-        for tile in line.tiles {
+        for tile in tiles {
             if tile == joker {
                 numJokers += 1
             }
+        }
+        
+        if forExposed && cardLine.concealed {
+            return false
         }
         
         let suitCombinations = [
@@ -253,11 +202,11 @@ struct Game {
             [Suit.bam, Suit.dot, Suit.crak],
         ]
         for suitCombination in suitCombinations {
-            var tempLine = line
+            var tempTiles = tiles
             var tempNumJokers = numJokers
-              for section in cardLine {
+            for section in cardLine.sections {
                     let (rank, suit) = (section.ranks, section.suit)
-//                    var matchTile = true
+                    var matchTile = true
                     var rankIndex = 0
                     for r in rank {
                         var tile: Tile
@@ -267,27 +216,25 @@ struct Game {
                         } else {
                             tile = Tile(Rank(rawValue: r)!, Suit(rawValue: suit)!)
                         }
-                        if let index = tempLine.tiles.firstIndex(of: tile) {
-                            tempLine.tiles.remove(at: index)
+                        if let index = tempTiles.firstIndex(of: tile) {
+                            tempTiles.remove(at: index)
                         } else {
                             if rank.count > 2 && tempNumJokers > 0 {
                                 if (forExposed && rankIndex > 0) || !forExposed {
-                                    tempLine.tiles.remove(at: tempLine.tiles.firstIndex(of: joker)!)
+                                    tempTiles.remove(at: tempTiles.firstIndex(of: joker)!)
                                     tempNumJokers -= 1
                                 } else {
                                     break
                                 }
                             } else {
-//                                matchTile = false
+                                matchTile = false
                                 break
                             }
                         }
                         rankIndex += 1
                     }
 
-                
-//                    if tempLine.tiles.count == 0 && matchTile {
-                    if tempLine.tiles.count == 0 {
+                    if tempTiles.count == 0 && matchTile {
                         return true
                     }
                     
@@ -296,11 +243,84 @@ struct Game {
         return false
     }
     
-    func getCard(tiles: [Tile]) -> [[LineSection]] {
+    func validateExposedAgainstLine(cardLine: CardLine, exposedGroups: [[Tile]]) -> Bool {
+        
+        
+        if cardLine.concealed {
+            return false
+        }
+        
+        let suitCombinations = [
+            [Suit.bam, Suit.crak, Suit.dot],
+            [Suit.dot, Suit.bam, Suit.crak],
+            [Suit.crak, Suit.dot, Suit.bam],
+            [Suit.crak, Suit.bam, Suit.dot],
+            [Suit.dot, Suit.crak, Suit.bam],
+            [Suit.bam, Suit.dot, Suit.crak],
+        ]
+        for suitCombination in suitCombinations {
+            for section in cardLine.sections {
+                    let (rank, suit) = (section.ranks, section.suit)
+                    var matchTile = true
+                    var rankIndex = 0
+                    var tempExposedGroups = exposedGroups
+                    for exposedGroup in tempExposedGroups {
+                        var numJokers = 0
+                        let joker = Tile(Rank.joker, Suit.joker)
+                        for tile in exposedGroup {
+                            if tile == joker {
+                                numJokers += 1
+                            }
+                        }
+                        var tempTiles = exposedGroup
+                        for r in rank {
+                            var tile: Tile
+                            if suit < 3 {
+                                let suitEnum = suitCombination[suit]
+                                tile = Tile(Rank(rawValue: r)!, suitEnum)
+                            } else {
+                                tile = Tile(Rank(rawValue: r)!, Suit(rawValue: suit)!)
+                            }
+                            if let index = tempTiles.firstIndex(of: tile) {
+                                tempTiles.remove(at: index)
+                            } else {
+                                if rank.count > 2 && numJokers > 0 {
+                                    if rankIndex > 0 {
+                                        tempTiles.remove(at: tempTiles.firstIndex(of: joker)!)
+                                        numJokers -= 1
+                                    } else {
+                                        break
+                                    }
+                                } else {
+                                    matchTile = false
+                                    break
+                                }
+                            }
+                            rankIndex += 1
+                        }
+                        if tempTiles.count == 0 && matchTile {
+                            return true
+                        }
+                    }
+                    
+                }
+            }
+        return false
+    }
+    
+    func getCard(tiles: [Tile]) -> [CardLine] {
         var cardLines = [
-            [LineSection([0, 0, 0, 0], 3), LineSection([2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 0), LineSection([8, 8, 8, 8], 0)],
-            [LineSection([2, 2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 1), LineSection([8, 8, 8], 1), LineSection([10, 10, 10, 10], 2)],
-            [LineSection([0, 0, 0, 0], 3), LineSection([4, 4, 4, 4], 0), LineSection([6, 6, 6, 6], 1), LineSection([2, 4], 2)],
+            // 2468
+            CardLine([LineSection([0, 0, 0, 0], 3), LineSection([2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 0), LineSection([8, 8, 8, 8], 0)]),
+            CardLine([LineSection([2, 2], 0), LineSection([4, 4], 0), LineSection([6, 6, 6], 1), LineSection([8, 8, 8], 1), LineSection([10, 10, 10, 10], 2)]),
+            CardLine([LineSection([2, 2, 2, 2], 0), LineSection([4, 4, 4, 4], 0), LineSection([6, 6, 6, 6], 0), LineSection([8, 8], 0)]),
+            CardLine([LineSection([2, 2, 2], 0), LineSection([4, 4, 4], 0), LineSection([6, 6, 6, 6], 1), LineSection([8, 8, 8, 8], 1)]),
+            CardLine([LineSection([0, 0, 0, 0], 3), LineSection([4, 4, 4, 4], 0), LineSection([6, 6, 6, 6], 1), LineSection([2, 4], 2)]),
+            CardLine([LineSection([0, 0, 0, 0], 3), LineSection([6, 6, 6, 6], 0), LineSection([8, 8, 8, 8], 1), LineSection([4, 8], 2)]),
+            CardLine([LineSection([2, 2], 0), LineSection([4, 4, 4], 0), LineSection([4, 4], 1), LineSection([6, 6, 6], 1), LineSection([8, 8, 8, 8], 2)]),
+            CardLine([LineSection([2, 2], 0), LineSection([4, 4, 4], 0), LineSection([10, 10, 10, 10], 0), LineSection([6, 6, 6], 0), LineSection([8, 8], 0)]),
+            CardLine([LineSection([0, 0], 3), LineSection([2, 2, 2], 0), LineSection([4, 4, 4], 1), LineSection([6, 6, 6], 1), LineSection([8, 8, 8], 0)], true, 30),
+
         ]
         
         var i = 1
@@ -309,23 +329,26 @@ struct Game {
             let n2 = i + 1
             let n3 = i + 2
             if n3 <= 9 {
-                cardLines.append([
+                // consecutive run
+                cardLines.append(CardLine([
                     LineSection([0, 0, 0, 0], 3), LineSection([n1, n1, n1, n1], 0), LineSection([n2, n2], 1), LineSection([n3, n3, n3, n3], 2),
-                ])
-                cardLines.append([
+                ]))
+                cardLines.append(CardLine([
                     LineSection([n1, n1, n1], 0), LineSection([n2, n2, n2], 0), LineSection([n1, n1, n1], 1), LineSection([n2, n2, n2], 1), LineSection([n3, n3], 2),
-                ])
+                ]))
             }
             i += 1
         }
         return cardLines
     }
     
-    func validateAgainstCard(line: Line) -> [[LineSection]] {
-        let cardLines = getCard(tiles: line.tiles)
-        var validLines: [[LineSection]] = []
+    func validateAgainstCard() -> [CardLine] {
+        let hand = hands[currentPlayer]
+        let tiles = hand.tiles + hand.exposedTiles
+        let cardLines = getCard(tiles: tiles)
+        var validLines: [CardLine] = []
         for cardLine in cardLines {
-            let pass = validateAgainstLine(cardLine: cardLine, line: line)
+            let pass = validateAgainstLine(cardLine: cardLine, tiles: tiles)
             if pass {
                 validLines.append(cardLine)
             }
@@ -333,16 +356,24 @@ struct Game {
         return validLines
     }
     
-    func validLines(exposedTiles: [Tile]) -> [[LineSection]] {
+    func validLines(exposedTiles: [Tile]) -> [CardLine] {
         let cardLines = getCard(tiles: exposedTiles)
-        var validLines: [[LineSection]] = []
+        var validLines: [CardLine] = []
         for cardLine in cardLines {
-            let pass = validateAgainstLine(cardLine: cardLine, line: Line(tiles: exposedTiles), forExposed: true)
+            let pass = validateAgainstLine(cardLine: cardLine, tiles: exposedTiles, forExposed: true)
             if pass {
                 validLines.append(cardLine)
             }
         }
+        print(validLines)
         return validLines
+    }
+    
+    func declareMahJong() throws {
+        let validLines = validateAgainstCard()
+        if validLines.count == 0 {
+            throw GameError.noMatchingLines
+        }
     }
     
     mutating func play(initialTiles: [Tile] = []) {
@@ -357,7 +388,7 @@ struct Game {
             if let command = readLine() {
                 switch command {
                 case "P":
-                    pickTile(hand: hand)
+                    _ = pickTile(hand: hand)
                     hand.tiles = sortTiles(tiles: hand.tiles)
                     print("Player \(index) - \(hand)")
                 case "D":
@@ -368,7 +399,7 @@ struct Game {
                                 let tile = hand.tiles[Int(safeIndex)]
                                 print("Discarding \(tile)...")
                                 discardedTile = tile
-                                discardTile(hand: hand, tile: tile)
+                                discardTile(tile: tile)
                             } else {
                                 throw GameError.invalidDiscardIndex
                             }
@@ -390,7 +421,7 @@ struct Game {
                         print("DEBUG - \(tileIndices), \(hand)")
                         let tiles = tileIndices.map({hand.tiles[Int($0)!]})
                         do {
-                            try expose(hand: hand, tiles: tiles, calledTile: discardedTile!)
+                            try expose(hand: hand, tiles: tiles)
                         } catch {
                             print("ERROR - \(error), cancelling call")
                             index = oldIndex
@@ -418,15 +449,16 @@ struct Game {
         }
     }
     
-    func expose(hand: Hand, tiles: [Tile], calledTile: Tile) throws {
+    mutating func expose(hand: Hand, tiles: [Tile]) throws {
+        let calledTile = discardedTile!
         let joker = Tile(Rank.joker, Suit.joker)
-        if tiles.count < 3 {
+        if tiles.count < 2 {
             throw IndecentExposure.tooFewTiles
-        } else if tiles.count > 5 {
+        } else if tiles.count > 4 {
             throw IndecentExposure.tooManyTiles
         } else if !tiles.allSatisfy({$0 == calledTile || $0 == joker}) {
             throw IndecentExposure.differentTiles
-        } else if validLines(exposedTiles: tiles + [calledTile]).count == 0 {
+        } else if validLines(exposedTiles: tiles + [calledTile] + hand.exposedTiles).count == 0 {
             throw IndecentExposure.noMatchingLines
         }
         hand.exposedTiles.append(calledTile)
@@ -438,6 +470,7 @@ struct Game {
             }
         }
         print("finished exposing, updated hand - \(hand)")
+        currentPlayer = 0
     }
     
     func exchange(tile: Tile, exposedHand: Hand, destinationHand: Hand) throws {
@@ -454,44 +487,3 @@ struct Game {
         print("Exchange complete - destinationHand \(destinationHand), exposedHand \(exposedHand)")
     }
 }
-
-
-var lineRules = Game()
-let flower = Tile(Rank.flower, Suit.flower)
-let twoCrak = Tile(Rank.two, Suit.crak)
-let fourCrak = Tile(Rank.four, Suit.crak)
-let sixCrak = Tile(Rank.six, Suit.crak)
-let eightCrak = Tile(Rank.eight, Suit.crak)
-let sixBam = Tile(Rank.six, Suit.bam)
-let eightBam = Tile(Rank.eight, Suit.bam)
-let dotDragon = Tile(Rank.dragon, Suit.dot)
-
-let twoDot = Tile(Rank.two, Suit.dot)
-let fourDot = Tile(Rank.four, Suit.dot)
-let joker = Tile(Rank.joker, Suit.joker)
-let productLine = Line(tiles: [joker, flower, joker, flower, fourCrak, fourCrak, fourCrak, fourCrak, sixBam, sixBam, sixBam, sixBam, twoDot, fourDot])
-var pass = lineRules.validateAgainstCard(line: productLine)
-print(pass)
-let badProductLine = Line(tiles: [flower, flower, flower, flower, fourCrak, fourCrak, fourCrak, fourCrak, sixBam, sixBam, sixBam, sixBam, twoDot, joker])
-pass = lineRules.validateAgainstCard(line: badProductLine)
-print(pass)
-
-let fiveBam = Tile(Rank.five, Suit.bam)
-let goodRunHand = Line(tiles: [flower, flower, flower, flower, joker, joker, joker, joker, fiveBam, fiveBam, sixCrak, sixCrak, sixCrak, sixCrak])
-print(lineRules.validateAgainstCard(line: goodRunHand))
-let badRunHand = Line(tiles: [flower, flower, flower, flower, fourDot, fourDot, fourDot, fourDot, fiveBam, fiveBam, sixCrak, sixCrak, sixCrak, twoDot])
-print(lineRules.validateAgainstCard(line: badRunHand))
-
-let exposedTiles = [flower, flower, flower, flower, joker, eightBam, eightBam, eightBam]
-print(lineRules.validLines(exposedTiles: exposedTiles))
-
-
-let exposedTiles2 = [sixBam, sixBam, sixBam]
-print(lineRules.validLines(exposedTiles: exposedTiles2))
-
-let southWind = Tile(Rank.south, Suit.wind)
-let initialTiles = [flower, flower, flower, fourDot, fourDot, fourDot, sixBam, sixBam, joker, twoCrak, fourCrak, southWind, southWind]
-var game = Game()
-//game.play(initialTiles: initialTiles)
-
-
