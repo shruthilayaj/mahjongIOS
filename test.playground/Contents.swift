@@ -1,11 +1,16 @@
-let a = [1, 2, 3]
-
-
-func foo (a: [Int]) {
-    var b = a
-    b.remove(at: 0)
-    print(b)
-    print(a)
+struct Test {
+    let rank: Int
 }
 
-foo(a: a)
+var x = [Test(rank: 9), Test(rank: 4), Test(rank: 9), Test(rank: 1)]
+
+x = x.sorted { (one: Test, two: Test) -> Bool in
+    return one.rank < two.rank
+}
+
+x
+
+let a = Test(rank: 9)
+let b = Test(rank: 6)
+
+a.rank == b.rank

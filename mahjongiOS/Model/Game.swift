@@ -96,16 +96,10 @@ struct Game {
             let value2 = sortByRank ? tile2.rank.rawValue : tile2.suit.rawValue
             let tiebreakValue1 = sortByRank ? tile1.suit.rawValue : tile1.rank.rawValue
             let tiebreakValue2 = sortByRank ? tile2.suit.rawValue : tile2.rank.rawValue
-            if (value1 < value2) {
-                return true
-            } else if (value1 > value2) {
-                return false
+            if value1 == value2 {
+                return tiebreakValue1 < tiebreakValue2
             } else {
-                if (tiebreakValue1 < tiebreakValue2) {
-                    return true
-                } else {
-                    return false
-                }
+                return value1 < value2
             }
         })
         return sortedTiles
