@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		81245A0F24AD3E48007955D2 /* mahjongIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mahjongIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		81245A0F24AD3E48007955D2 /* mahjongiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mahjongiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81245A1224AD3E48007955D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81245A1424AD3E48007955D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		81245A1624AD3E48007955D2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		81245A0624AD3E48007955D2 = {
 			isa = PBXGroup;
 			children = (
-				81245A1124AD3E48007955D2 /* mahjongIOS */,
+				81245A1124AD3E48007955D2 /* mahjongiOS */,
 				81245A1024AD3E48007955D2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +58,12 @@
 		81245A1024AD3E48007955D2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				81245A0F24AD3E48007955D2 /* mahjongIOS.app */,
+				81245A0F24AD3E48007955D2 /* mahjongiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		81245A1124AD3E48007955D2 /* mahjongIOS */ = {
+		81245A1124AD3E48007955D2 /* mahjongiOS */ = {
 			isa = PBXGroup;
 			children = (
 				81245A2824AD3E86007955D2 /* Controller */,
@@ -75,7 +75,7 @@
 				81245A1D24AD3E4E007955D2 /* LaunchScreen.storyboard */,
 				81245A2024AD3E4E007955D2 /* Info.plist */,
 			);
-			path = mahjongIOS;
+			path = mahjongiOS;
 			sourceTree = "<group>";
 		};
 		81245A2624AD3E74007955D2 /* Model */ = {
@@ -109,9 +109,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		81245A0E24AD3E48007955D2 /* mahjongIOS */ = {
+		81245A0E24AD3E48007955D2 /* mahjongiOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongIOS" */;
+			buildConfigurationList = 81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongiOS" */;
 			buildPhases = (
 				81245A0B24AD3E48007955D2 /* Sources */,
 				81245A0C24AD3E48007955D2 /* Frameworks */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = mahjongIOS;
+			name = mahjongiOS;
 			productName = mahjongIOS;
-			productReference = 81245A0F24AD3E48007955D2 /* mahjongIOS.app */;
+			productReference = 81245A0F24AD3E48007955D2 /* mahjongiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +141,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 81245A0A24AD3E48007955D2 /* Build configuration list for PBXProject "mahjongIOS" */;
+			buildConfigurationList = 81245A0A24AD3E48007955D2 /* Build configuration list for PBXProject "mahjongiOS" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				81245A0E24AD3E48007955D2 /* mahjongIOS */,
+				81245A0E24AD3E48007955D2 /* mahjongiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -329,12 +329,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = mahjongIOS/Info.plist;
+				INFOPLIST_FILE = mahjongiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shruthilayajaganathan.mahjongIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shruthilayajaganathan.mahjongiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -346,12 +346,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = mahjongIOS/Info.plist;
+				INFOPLIST_FILE = mahjongiOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.shruthilayajaganathan.mahjongIOS;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shruthilayajaganathan.mahjongiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -361,7 +361,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		81245A0A24AD3E48007955D2 /* Build configuration list for PBXProject "mahjongIOS" */ = {
+		81245A0A24AD3E48007955D2 /* Build configuration list for PBXProject "mahjongiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81245A2124AD3E4E007955D2 /* Debug */,
@@ -370,7 +370,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongIOS" */ = {
+		81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongiOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				81245A2424AD3E4E007955D2 /* Debug */,
