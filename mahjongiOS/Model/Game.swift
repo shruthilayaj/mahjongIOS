@@ -27,10 +27,6 @@ struct Game {
     var currentPlayer = 0
     
     init() {
-        possibleLines = generateLines()
-        possibleLines = possibleLines.map { (line) -> Line in
-            Line(tiles: sortTiles(tiles: line.tiles))
-        }
         deck = generateTiles()
         deal()
         let flower = Tile(Rank.flower, Suit.flower)
@@ -42,30 +38,6 @@ struct Game {
         let southWind = Tile(Rank.south, Suit.wind)
         let initialTiles = [flower, flower, fourDot, fourDot, fourDot, sixDot, sixDot, joker, twoCrak, twoCrak, eightCrak, southWind, southWind, joker]
         hands[0].tiles = initialTiles
-    }
-    
-    func generateLines() -> [Line] {
-        let flower = Tile(Rank.flower, Suit.flower)
-        let twoCrak = Tile(Rank.two, Suit.crak)
-        let twoBam = Tile(Rank.two, Suit.bam)
-        let twoDot = Tile(Rank.two, Suit.dot)
-        let dragonDot = Tile(Rank.dragon, Suit.dot)
-        let lines = [
-            Line(tiles: [
-                flower, flower, twoCrak, dragonDot, twoCrak, dragonDot, twoDot,
-                twoDot, twoDot, twoDot, twoBam, twoBam, twoBam, twoBam,
-            ]),
-            Line(tiles: [
-                flower, flower, twoBam, dragonDot, twoBam, dragonDot, twoDot,
-                twoDot, twoDot, twoDot, twoCrak, twoCrak, twoCrak, twoCrak,
-            ]),
-            Line(tiles: [
-                flower, flower, twoDot, dragonDot, twoDot, dragonDot, twoBam,
-                twoBam, twoBam, twoBam, twoCrak, twoCrak, twoCrak, twoCrak,
-            ]),
-        ]
-        
-        return lines
     }
     
     func generateTiles() -> [Tile] {
@@ -86,7 +58,7 @@ struct Game {
         tiles.append(contentsOf: repeatElement(Tile(Rank.west, Suit.wind), count: 4))
         tiles.append(contentsOf: repeatElement(Tile(Rank.south, Suit.wind), count: 4))
         return tiles
-        // TODO - add jokers
+        // TODO: Add jokers
     }
     
     func sortTiles(tiles: [Tile], sortByRank: Bool = true) -> [Tile] {
@@ -108,16 +80,6 @@ struct Game {
     mutating func sortHand(sortByRank: Bool) {
         let hand = hands[currentPlayer]
         hand.tiles = sortTiles(tiles: hand.tiles, sortByRank: sortByRank)
-    }
-    
-    func matchLine(hand: Hand) -> Bool {
-        let sortedTiles = sortTiles(tiles: hand.tiles)
-        for line in possibleLines {
-            if line.tiles == sortedTiles {
-                return true
-            }
-        }
-        return false
     }
     
     mutating func deal() {
@@ -147,10 +109,9 @@ struct Game {
             let isComputerDiscarding = currentPlayer != 0
             delegate?.didDiscardTile(tile: tile, isComputerDiscarding: isComputerDiscarding)
 
-//            currentPlayer = (currentPlayer + 1)%4
             if !isComputerDiscarding {
                 currentPlayer = (currentPlayer + 1)%4
-                print("calling discardRandomTile tile from discardTile for \(currentPlayer)")
+                print("Calling discardRandomTile tile from discardTile for \(currentPlayer)")
                 discardRandomTile()
             }
         }
@@ -382,7 +343,7 @@ struct Game {
             if let command = readLine() {
                 switch command {
                 case "P":
-                    _ = pickTile(hand: hand)
+                    pickTile(hand: hand)
                     hand.tiles = sortTiles(tiles: hand.tiles)
                     print("Player \(index) - \(hand)")
                 case "D":
@@ -448,6 +409,7 @@ struct Game {
         let joker = Tile(Rank.joker, Suit.joker)
         if tiles.count < 2 {
             throw IndecentExposure.tooFewTiles
+        // TODO: Implement quints
         } else if tiles.count > 4 {
             throw IndecentExposure.tooManyTiles
         } else if !tiles.allSatisfy({$0 == calledTile || $0 == joker}) {

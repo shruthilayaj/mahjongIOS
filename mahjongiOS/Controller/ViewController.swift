@@ -39,6 +39,9 @@ class ViewController: UIViewController, GameDelegate {
     var currentPlayer = 0
     
     fileprivate func syncTileButtons() {
+        // Displays the tile in the order specified in hand.tiles.
+        // Call this function when order or contents of hand.tiles
+        // change.
         var index = 0
         _ = tileButtons.map({
             $0.isHidden = true
@@ -64,12 +67,14 @@ class ViewController: UIViewController, GameDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // TODO: Why are we not initializing game in the ViewController?
         game = Game()
         game!.delegate = self
         hand = game!.hands[0]
         tileButtons = [tile1, tile2, tile3, tile4, tile5, tile6, tile7, tile8, tile9, tile10, tile11, tile12, tile13, tile14]
         syncTileButtons()
+
+        // Tracking the allowed state transitions.
         discardButton.isEnabled = false
         passButton.isEnabled = false
         callButton.isEnabled = false
@@ -78,6 +83,14 @@ class ViewController: UIViewController, GameDelegate {
     }
     
     @IBAction func tileSelected(_ sender: Any) {
+        // This IBAction is connected to all the Tile buttons.
+        /*
+        TODO: Enable selecting only one tile when discardState == True. If
+         I select a 2 bam and then select a 3 crak, the 2 bam should be
+         de-selected instead of raising an alert. That would force the
+         tile selected during discard, call/expose and joker trade to be
+         decoupled.
+        */
         let button = sender as! UIButton
         let tileIndex = button.tag
         if discardState && selectedIndexes.count > 0 && !button.isSelected {
@@ -86,12 +99,17 @@ class ViewController: UIViewController, GameDelegate {
             self.present(alert, animated: true, completion: nil)
             return
         }
+
+        // Selecting a tile.
         if !selectedIndexes.contains(tileIndex){
             selectedIndexes.append(tileIndex)
             button.isSelected = true
             if discardState && selectedIndexes.count == 1 && hand!.tileCount == 14 {
                 discardButton.isEnabled = true
             }
+
+        // Deselecting a tile.
+        // TODO: Investigate if there's a better setting for de/selecting.
         } else {
             selectedIndexes.remove(at: selectedIndexes.firstIndex(of: tileIndex)!)
             button.isSelected = false
