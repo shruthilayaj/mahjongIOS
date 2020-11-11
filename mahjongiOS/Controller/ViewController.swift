@@ -219,6 +219,8 @@ class ViewController: UIViewController, GameDelegate {
         let tile = hand!.tiles[selectedIndexes[0]]
         let tileButton = tileButtons[selectedIndexes.remove(at: 0)]
         tileButton.isSelected = false
+        // TODO: Add option to exchange with other players
+        // TODO: Eventually remove this pop up and allow selecting the tile to exchange
         let alert = UIAlertController(title: "Exchange Tile", message: "Which player would you like to exchange with?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: NSLocalizedString("Myself", comment: "Default action"), style: .default, handler: { _ in
             do {
