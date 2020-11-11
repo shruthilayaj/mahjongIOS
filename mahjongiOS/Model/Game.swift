@@ -331,79 +331,6 @@ struct Game {
         }
     }
     
-    mutating func play(initialTiles: [Tile] = []) {
-        if initialTiles.count == 13 {
-            let hand = Hand()
-            hand.tiles = initialTiles
-            hands[0] = hand
-        }
-        var index = 0
-        while deck.count > 0 {
-            var hand = hands[index]
-            if let command = readLine() {
-                switch command {
-                case "P":
-                    pickTile(hand: hand)
-                    hand.tiles = sortTiles(tiles: hand.tiles)
-                    print("Player \(index) - \(hand)")
-                case "D":
-                    print("Please discard a tile from your hand...")
-                    if let input = readLine() {
-                        do {
-                            if let safeIndex = Int(input) {
-                                let tile = hand.tiles[Int(safeIndex)]
-                                print("Discarding \(tile)...")
-                                discardedTile = tile
-                                discardTile(tile: tile)
-                            } else {
-                                throw GameError.invalidDiscardIndex
-                            }
-                        } catch {
-                            print(error)
-                        }
-                    }
-                    index += 1
-                    index = index % 4
-                case "C":
-                    print("Which player is calling?")
-                    let oldIndex = index
-                    index = Int(readLine()!)!
-                    hand = hands[index]
-                    print("Player \(index) calling \(discardedTile!), hand \(hand)")
-                    print("Please select decent tiles to expose...")
-                    if let input = readLine() {
-                        let tileIndices = input.split(separator: ",")
-                        print("DEBUG - \(tileIndices), \(hand)")
-                        let tiles = tileIndices.map({hand.tiles[Int($0)!]})
-                        do {
-                            try expose(hand: hand, tiles: tiles)
-                        } catch {
-                            print("ERROR - \(error), cancelling call")
-                            index = oldIndex
-                        }
-                    }
-                case "X":
-                    print("Which player would you like to exchange with?")
-                    let exposedIndex = Int(readLine()!)!
-                    let exposedHand = hands[exposedIndex]
-                    let destinationHand = hands[index]
-                    print("Which tile would you like to exchange?")
-                    if let input = readLine() {
-                        let tile = destinationHand.tiles[Int(input)!]
-                        do {
-                            try exchange(tile: tile, exposedHand: exposedHand, destinationHand: destinationHand)
-                        } catch {
-                            print("\(error)")
-                        }
-                    }
-
-                default:
-                    print("invalid command ya fkn idiot")
-                }
-            }
-        }
-    }
-    
     mutating func expose(hand: Hand, tiles: [Tile]) throws {
         let calledTile = discardedTile!
         let joker = Tile(Rank.joker, Suit.joker)
@@ -429,7 +356,9 @@ struct Game {
         currentPlayer = 0
     }
     
-    func exchange(tile: Tile, exposedHand: Hand, destinationHand: Hand) throws {
+    func exchange(tile: Tile, withPlayer player: Int) throws {
+        let destinationHand = hands[currentPlayer]
+        let exposedHand = hands[player]
         if !exposedHand.exposedTiles.contains(tile) {
             throw GameError.invalidExchangeTile
         }
@@ -439,6 +368,7 @@ struct Game {
             exposedHand.exposedTiles.append(tile)
             destinationHand.tiles.append(exposedJoker)
             destinationHand.tiles.remove(at: destinationHand.tiles.firstIndex(of: tile)!)
+            delegate?.didExchangeTile()
         }
         print("Exchange complete - destinationHand \(destinationHand), exposedHand \(exposedHand)")
     }
