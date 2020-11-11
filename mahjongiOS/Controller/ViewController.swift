@@ -106,6 +106,7 @@ class ViewController: UIViewController, GameDelegate {
             button.isSelected = true
             if discardState && selectedIndexes.count == 1 && hand!.tileCount == 14 {
                 discardButton.isEnabled = true
+                exchangeButton.isEnabled = true
             }
 
         // Deselecting a tile.
@@ -114,6 +115,7 @@ class ViewController: UIViewController, GameDelegate {
             selectedIndexes.remove(at: selectedIndexes.firstIndex(of: tileIndex)!)
             button.isSelected = false
             discardButton.isEnabled = false
+            exchangeButton.isEnabled = false
         }
         print("\(selectedIndexes)")
     }
@@ -124,6 +126,7 @@ class ViewController: UIViewController, GameDelegate {
         game!.discardTile(tile: discardedTile)
         syncTileButtons()
         discardButton.isEnabled = false
+        exchangeButton.isEnabled = false
         let tileButton = tileButtons[selectedIndexes.remove(at: 0)]
         tileButton.isSelected = false
         mahJongButton.isEnabled = false
@@ -144,6 +147,11 @@ class ViewController: UIViewController, GameDelegate {
         }
     }
     
+    func didExchangeTile() {
+        syncTileButtons()
+        discardButton.isEnabled = false
+        exchangeButton.isEnabled = false
+    }
     
     @IBAction func passButtonPressed(_ sender: UIButton) {
         print("Passing on discarded tile...")
@@ -205,7 +213,27 @@ class ViewController: UIViewController, GameDelegate {
             self.present(alert, animated: true, completion: nil)
         }
     }
-    
+
+
+    @IBAction func exchangeButtonPressed(_ sender: Any) {
+        let tile = hand!.tiles[selectedIndexes[0]]
+        let tileButton = tileButtons[selectedIndexes.remove(at: 0)]
+        tileButton.isSelected = false
+        // TODO: Add option to exchange with other players
+        // TODO: Eventually remove this pop up and allow selecting the tile to exchange
+        let alert = UIAlertController(title: "Exchange Tile", message: "Which player would you like to exchange with?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Myself", comment: "Default action"), style: .default, handler: { _ in
+            do {
+                try self.game!.exchange(tile: tile, withPlayer: 0)
+            } catch {
+                let alert = UIAlertController(title: "Game Error", message: "\(error)", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     
     @IBAction func sortByRankPressed(_ sender: UIButton) {
         game!.sortHand(sortByRank: true)
@@ -217,4 +245,3 @@ class ViewController: UIViewController, GameDelegate {
         syncTileButtons()
     }
 }
-

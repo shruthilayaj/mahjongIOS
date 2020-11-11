@@ -11,5 +11,6 @@ import Foundation
 protocol GameDelegate {
     func didDiscardTile(tile: Tile, isComputerDiscarding: Bool)
     func didPickTile()
+    func didExchangeTile()
 }
 
