@@ -100,6 +100,9 @@ struct Game {
         let tile = deck.popLast()!
         print("Picking up \(tile)")
         hand.tiles.append(tile)
+        let isComputerPicking = currentPlayer != 0
+        let tilesRemaining = deck.count
+        delegate?.didPickTile(tilesRemaining: tilesRemaining, isComputerPicking: isComputerPicking)
     }
     
     mutating func discardTile(tile: Tile) {
@@ -119,8 +122,6 @@ struct Game {
     
     mutating func discardRandomTile() {
         pickTile(hand: hands[currentPlayer])
-        let tilesRemaining = deck.count
-        delegate?.didPickTile(tilesRemaining: tilesRemaining, isComputerPicking: true)
         discardTile(tile: hands[currentPlayer].tiles.randomElement()!)
     }
     
@@ -132,8 +133,6 @@ struct Game {
             discardRandomTile()
         } else {
             pickTile(hand: hands[currentPlayer])
-            let tilesRemaining = deck.count
-            delegate?.didPickTile(tilesRemaining: tilesRemaining, isComputerPicking: false)
         }
         
     }
