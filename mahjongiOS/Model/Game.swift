@@ -119,6 +119,8 @@ struct Game {
     
     mutating func discardRandomTile() {
         pickTile(hand: hands[currentPlayer])
+        let tilesRemaining = deck.count
+        delegate?.didPickTile(tilesRemaining: tilesRemaining, isComputerPicking: true)
         discardTile(tile: hands[currentPlayer].tiles.randomElement()!)
     }
     
@@ -130,7 +132,8 @@ struct Game {
             discardRandomTile()
         } else {
             pickTile(hand: hands[currentPlayer])
-            delegate?.didPickTile()
+            let tilesRemaining = deck.count
+            delegate?.didPickTile(tilesRemaining: tilesRemaining, isComputerPicking: false)
         }
         
     }

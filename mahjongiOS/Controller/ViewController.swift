@@ -30,6 +30,7 @@ class ViewController: UIViewController, GameDelegate {
     @IBOutlet weak var exposeButton: UIButton!
     @IBOutlet weak var exchangeButton: UIButton!
     @IBOutlet weak var mahJongButton: UIButton!
+    @IBOutlet weak var numTilesRemaining: UILabel!
     
     var game: Game? = nil
     var selectedIndexes: [Int] = []
@@ -132,11 +133,14 @@ class ViewController: UIViewController, GameDelegate {
         mahJongButton.isEnabled = false
     }
     
-    func didPickTile() {
-        syncTileButtons()
-        callButton.isEnabled = false
-        passButton.isEnabled = false
-        mahJongButton.isEnabled = true
+    func didPickTile(tilesRemaining: Int, isComputerPicking: Bool = false) {
+        if !isComputerPicking {
+            syncTileButtons()
+            callButton.isEnabled = false
+            passButton.isEnabled = false
+            mahJongButton.isEnabled = true
+        }
+        numTilesRemaining.text = "Remaining Tiles: \(tilesRemaining)"
     }
     
     func didDiscardTile(tile: Tile, isComputerDiscarding: Bool) {

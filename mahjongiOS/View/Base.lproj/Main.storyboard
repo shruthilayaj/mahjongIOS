@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,6 +221,13 @@
                                     <action selector="sortByRankPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nwG-ST-i0s"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="OfD-8P-XbQ">
+                                <rect key="frame" x="83" y="88" width="93" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -243,6 +250,7 @@
                         <outlet property="exchangeButton" destination="G73-GQ-xzL" id="bDO-pL-grM"/>
                         <outlet property="exposeButton" destination="vPH-Vn-eok" id="bWj-Wh-qX5"/>
                         <outlet property="mahJongButton" destination="Aac-8s-Jtj" id="0lX-fM-T0a"/>
+                        <outlet property="numTilesRemaining" destination="OfD-8P-XbQ" id="2Yk-Bd-JOm"/>
                         <outlet property="passButton" destination="kMr-KR-M5f" id="rnd-ZJ-INU"/>
                         <outlet property="tile1" destination="zDe-qi-J7H" id="7KD-mj-LVN"/>
                         <outlet property="tile10" destination="Iyv-9Z-Unk" id="zCL-wS-Ba8"/>
