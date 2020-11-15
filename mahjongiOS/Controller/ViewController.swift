@@ -133,7 +133,7 @@ class ViewController: UIViewController, GameDelegate {
         mahJongButton.isEnabled = false
     }
     
-    func didPickTile(tilesRemaining: Int, isComputerPicking: Bool = false) {
+    func didPickTile(tilesRemaining: Int, isComputerPicking: Bool) {
         if !isComputerPicking {
             syncTileButtons()
             callButton.isEnabled = false
