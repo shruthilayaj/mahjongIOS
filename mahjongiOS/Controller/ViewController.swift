@@ -9,20 +9,20 @@
 import UIKit
 
 class ViewController: UIViewController, GameDelegate {
-    @IBOutlet weak var tile1: UIButton!
-    @IBOutlet weak var tile2: UIButton!
-    @IBOutlet weak var tile3: UIButton!
-    @IBOutlet weak var tile4: UIButton!
-    @IBOutlet weak var tile5: UIButton!
-    @IBOutlet weak var tile6: UIButton!
-    @IBOutlet weak var tile7: UIButton!
-    @IBOutlet weak var tile8: UIButton!
-    @IBOutlet weak var tile9: UIButton!
-    @IBOutlet weak var tile10: UIButton!
-    @IBOutlet weak var tile11: UIButton!
-    @IBOutlet weak var tile12: UIButton!
-    @IBOutlet weak var tile13: UIButton!
-    @IBOutlet weak var tile14: UIButton!
+    @IBOutlet weak var tile1: TileButton!
+    @IBOutlet weak var tile2: TileButton!
+    @IBOutlet weak var tile3: TileButton!
+    @IBOutlet weak var tile4: TileButton!
+    @IBOutlet weak var tile5: TileButton!
+    @IBOutlet weak var tile6: TileButton!
+    @IBOutlet weak var tile7: TileButton!
+    @IBOutlet weak var tile8: TileButton!
+    @IBOutlet weak var tile9: TileButton!
+    @IBOutlet weak var tile10: TileButton!
+    @IBOutlet weak var tile11: TileButton!
+    @IBOutlet weak var tile12: TileButton!
+    @IBOutlet weak var tile13: TileButton!
+    @IBOutlet weak var tile14: TileButton!
     @IBOutlet weak var discardButton: UIButton!
     @IBOutlet weak var discardLabel: UILabel!
     @IBOutlet weak var passButton: UIButton!
@@ -36,7 +36,7 @@ class ViewController: UIViewController, GameDelegate {
     var selectedIndexes: [Int] = []
     var discardState = true
     var hand: Hand? = nil
-    var tileButtons: [UIButton] = []
+    var tileButtons: [TileButton] = []
     var currentPlayer = 0
     
     fileprivate func syncTileButtons() {
@@ -53,6 +53,7 @@ class ViewController: UIViewController, GameDelegate {
             tileButton.tag = index
             tileButton.setTitle("\(tile)", for: .normal)
             tileButton.isHidden = false
+            tileButton.isExposed = false
             index += 1
         }
         for tile in hand!.exposedTiles {
@@ -61,6 +62,7 @@ class ViewController: UIViewController, GameDelegate {
             tileButton.setTitle("\(tile)", for: .normal)
             tileButton.backgroundColor = UIColor.systemYellow
             tileButton.isHidden = false
+            tileButton.isExposed = true
             index += 1
         }
         
@@ -83,7 +85,7 @@ class ViewController: UIViewController, GameDelegate {
         exposeButton.isEnabled = false
     }
     
-    @IBAction func tileSelected(_ sender: Any) {
+    @IBAction func tileSelected(_ button: TileButton) {
         // This IBAction is connected to all the Tile buttons.
         /*
         TODO: Enable selecting only one tile when discardState == True. If
@@ -92,31 +94,41 @@ class ViewController: UIViewController, GameDelegate {
          tile selected during discard, call/expose and joker trade to be
          decoupled.
         */
-        let button = sender as! UIButton
+        exchangeButton.isEnabled = false
+        discardButton.isEnabled = false
         let tileIndex = button.tag
-        if discardState && selectedIndexes.count > 0 && !button.isSelected {
-            let alert = UIAlertController(title: "Error", message: "Select single tile to discard", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("OK", comment: "Default action"), style: .default))
-            self.present(alert, animated: true, completion: nil)
-            return
+        if discardState && selectedIndexes.count == 1 && !button.isSelected {
+            let previous_selection = tileButtons[selectedIndexes[0]]
+            if button.isExposed != previous_selection.isExposed {
+                selectedIndexes.append(tileIndex)
+                button.isSelected = true
+                exchangeButton.isEnabled = true
+                
+                return
+            }
+            else {
+                previous_selection.isSelected = false
+                selectedIndexes.remove(at: selectedIndexes.firstIndex(of: previous_selection.tag)!)
+            }
         }
 
-        // Selecting a tile.
+
         if !selectedIndexes.contains(tileIndex){
+            if discardState && selectedIndexes.count == 2 {
+                button.shake()
+                return
+            }
             selectedIndexes.append(tileIndex)
             button.isSelected = true
-            if discardState && selectedIndexes.count == 1 && hand!.tileCount == 14 {
-                discardButton.isEnabled = true
-                exchangeButton.isEnabled = true
-            }
-
         // Deselecting a tile.
         // TODO: Investigate if there's a better setting for de/selecting.
         } else {
             selectedIndexes.remove(at: selectedIndexes.firstIndex(of: tileIndex)!)
             button.isSelected = false
-            discardButton.isEnabled = false
-            exchangeButton.isEnabled = false
+        }
+        
+        if discardState && selectedIndexes.count == 1 && hand!.tileCount == 14 && !tileButtons[selectedIndexes[0]].isExposed {
+            discardButton.isEnabled = true
         }
         print("\(selectedIndexes)")
     }
@@ -247,5 +259,16 @@ class ViewController: UIViewController, GameDelegate {
     @IBAction func sortBySuitPressed(_ sender: UIButton) {
         game!.sortHand(sortByRank: false)
         syncTileButtons()
+    }
+}
+
+extension UIView {
+    // Using SpringWithDamping
+    func shake(duration: TimeInterval = 0.5, xValue: CGFloat = 12, yValue: CGFloat = 0) {
+        self.transform = CGAffineTransform(translationX: xValue, y: yValue)
+        UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1.0, options: .curveEaseInOut, animations: {
+            self.transform = CGAffineTransform.identity
+        }, completion: nil)
+
     }
 }

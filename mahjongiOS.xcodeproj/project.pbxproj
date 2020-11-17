@@ -18,6 +18,7 @@
 		81245A2E24AD3F1F007955D2 /* Hand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A2D24AD3F1F007955D2 /* Hand.swift */; };
 		81245A3024AD3F3F007955D2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A2F24AD3F3F007955D2 /* Line.swift */; };
 		81245A3224AE7344007955D2 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A3124AE7344007955D2 /* GameDelegate.swift */; };
+		943F23B525623A0E0040EF13 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F23B325623A0E0040EF13 /* TileButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		81245A2D24AD3F1F007955D2 /* Hand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hand.swift; sourceTree = "<group>"; };
 		81245A2F24AD3F3F007955D2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		81245A3124AE7344007955D2 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
+		943F23B425623A0E0040EF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/TileButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			isa = PBXGroup;
 			children = (
 				81245A1824AD3E48007955D2 /* Main.storyboard */,
+				943F23B325623A0E0040EF13 /* TileButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				81245A2E24AD3F1F007955D2 /* Hand.swift in Sources */,
 				81245A2C24AD3EE0007955D2 /* Tile.swift in Sources */,
 				81245A1524AD3E48007955D2 /* SceneDelegate.swift in Sources */,
+				943F23B525623A0E0040EF13 /* TileButton.swift in Sources */,
 				81245A3024AD3F3F007955D2 /* Line.swift in Sources */,
 				81245A2A24AD3EB3007955D2 /* Game.swift in Sources */,
 			);
@@ -205,6 +209,14 @@
 				81245A1E24AD3E4E007955D2 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		943F23B325623A0E0040EF13 /* TileButton.swift */ = {
+			isa = PBXVariantGroup;
+			children = (
+				943F23B425623A0E0040EF13 /* Base */,
+			);
+			name = TileButton.swift;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

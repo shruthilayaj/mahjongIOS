@@ -356,6 +356,7 @@ struct Game {
         }
         print("finished exposing, updated hand - \(hand)")
         currentPlayer = 0
+        
     }
     
     func exchange(tile: Tile, withPlayer player: Int) throws {
