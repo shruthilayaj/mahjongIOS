@@ -232,22 +232,31 @@ class ViewController: UIViewController, GameDelegate {
 
 
     @IBAction func exchangeButtonPressed(_ sender: Any) {
-        let tile = hand!.tiles[selectedIndexes[0]]
-        let tileButton = tileButtons[selectedIndexes.remove(at: 0)]
-        tileButton.isSelected = false
-        // TODO: Add option to exchange with other players
-        // TODO: Eventually remove this pop up and allow selecting the tile to exchange
-        let alert = UIAlertController(title: "Exchange Tile", message: "Which player would you like to exchange with?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("Myself", comment: "Default action"), style: .default, handler: { _ in
-            do {
-                try self.game!.exchange(tile: tile, withPlayer: 0)
-            } catch {
-                let alert = UIAlertController(title: "Game Error", message: "\(error)", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default))
-                self.present(alert, animated: true, completion: nil)
+        var handTile: Tile?
+        var exposedTile: Tile?
+
+        for index in selectedIndexes {
+            let tileButton = tileButtons[selectedIndexes.remove(at: 0)]
+            tileButton.isSelected = false
+            if tileButton.isExposed {
+                let exposedHand = game!.hands[0]
+                let exposedHandTiles = exposedHand.tiles + exposedHand.exposedTiles
+                exposedTile = exposedHandTiles[index]
+            } else {
+                handTile = hand!.tiles[index]
             }
-        }))
-        self.present(alert, animated: true, completion: nil)
+        }
+        
+        // TODO: Add option to exchange with other players
+
+        do {
+            try self.game!.exchange(tile: handTile!, exposedTile: exposedTile!)
+        } catch {
+            // TODO: Implement a toast instead of an alert
+            let alert = UIAlertController(title: "Game Error", message: "\(error)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: "Default action"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 
     

@@ -359,13 +359,20 @@ struct Game {
         
     }
     
-    func exchange(tile: Tile, withPlayer player: Int) throws {
+    func exchange(tile: Tile, exposedTile: Tile) throws {
         let destinationHand = hands[currentPlayer]
-        let exposedHand = hands[player]
+        /*
+            TODO: Add support for exchange with computers. We would need
+                to track which hand a particular tile belongs to.
+        */
+        let joker = Tile(Rank.joker, Suit.joker)
+        if exposedTile != joker {
+            throw GameError.invalidExchangeTile
+        }
+        let exposedHand = hands[0]
         if !exposedHand.exposedTiles.contains(tile) {
             throw GameError.invalidExchangeTile
         }
-        let joker = Tile(Rank.joker, Suit.joker)
         if let i = exposedHand.exposedTiles.firstIndex(of: joker) {
             let exposedJoker = exposedHand.exposedTiles.remove(at: i)
             exposedHand.exposedTiles.append(tile)
