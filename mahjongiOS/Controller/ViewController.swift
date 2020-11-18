@@ -99,7 +99,8 @@ class ViewController: UIViewController, GameDelegate {
         let tileIndex = button.tag
         if discardState && selectedIndexes.count == 1 && !button.isSelected {
             let previous_selection = tileButtons[selectedIndexes[0]]
-            if button.isExposed != previous_selection.isExposed {
+            let isSwapping = button.isExposed != previous_selection.isExposed
+            if isSwapping {
                 selectedIndexes.append(tileIndex)
                 button.isSelected = true
                 exchangeButton.isEnabled = true
