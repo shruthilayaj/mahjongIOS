@@ -20,15 +20,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="o1l-c4-CPA">
                                 <rect key="frame" x="166" y="241" width="600" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-qi-J7H">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="zDe-qi-J7H" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="45"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gd-7B-BPf"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cYN-11-3ea">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cYN-11-3ea" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="87" y="0.0" width="77.5" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -36,7 +35,7 @@
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nrl-5r-xGS"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HSt-Uc-c8i">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HSt-Uc-c8i" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="174.5" y="0.0" width="77" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -44,7 +43,7 @@
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="f7U-Z0-Vr4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uvq-zq-nJJ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="uvq-zq-nJJ" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="261.5" y="0.0" width="77" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -52,7 +51,7 @@
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NAe-qn-cbz"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DWZ-wt-tFu">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="DWZ-wt-tFu" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="348.5" y="0.0" width="77" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -60,7 +59,7 @@
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sjZ-da-pBs"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="85U-Dt-PgZ">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="85U-Dt-PgZ" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="435.5" y="0.0" width="77.5" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -68,7 +67,7 @@
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="VZ3-Va-fOl"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-7l-mMh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-7l-mMh" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="523" y="0.0" width="77" height="45"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="Button"/>
@@ -91,49 +90,49 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="FCC-dX-ugU">
                                 <rect key="frame" x="166" y="312" width="600" height="45"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ukm-wZ-oZm">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Ukm-wZ-oZm" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="77" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hR1-be-M9s"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T35-Az-rbh">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="T35-Az-rbh" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="87" y="0.0" width="77.5" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="y1J-VU-m7c"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Iyv-9Z-Unk">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="Iyv-9Z-Unk" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="174.5" y="0.0" width="77" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXo-2S-KsQ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-cu-Uhv">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="lzk-cu-Uhv" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="261.5" y="0.0" width="77" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OBE-OX-8Ql"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bFd-to-GrG">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="bFd-to-GrG" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="348.5" y="0.0" width="77" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NwJ-df-Gmp"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="g8b-NV-dB3">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="g8b-NV-dB3" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="435.5" y="0.0" width="77.5" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
                                             <action selector="tileSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gky-fq-ZNJ"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ILK-C8-5wW">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="ILK-C8-5wW" customClass="TileButton" customModule="mahjongiOS" customModuleProvider="target">
                                         <rect key="frame" x="523" y="0.0" width="77" height="45"/>
                                         <state key="normal" title="Button"/>
                                         <connections>
