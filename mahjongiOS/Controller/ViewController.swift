@@ -87,13 +87,6 @@ class ViewController: UIViewController, GameDelegate {
     
     @IBAction func tileSelected(_ button: TileButton) {
         // This IBAction is connected to all the Tile buttons.
-        /*
-        TODO: Enable selecting only one tile when discardState == True. If
-         I select a 2 bam and then select a 3 crak, the 2 bam should be
-         de-selected instead of raising an alert. That would force the
-         tile selected during discard, call/expose and joker trade to be
-         decoupled.
-        */
         exchangeButton.isEnabled = false
         discardButton.isEnabled = false
         let tileIndex = button.tag
