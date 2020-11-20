@@ -19,9 +19,12 @@
 		81245A3024AD3F3F007955D2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A2F24AD3F3F007955D2 /* Line.swift */; };
 		81245A3224AE7344007955D2 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A3124AE7344007955D2 /* GameDelegate.swift */; };
 		943F23B525623A0E0040EF13 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F23B325623A0E0040EF13 /* TileButton.swift */; };
+		DED2729DEF2B803025925414 /* Pods_mahjongiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E89E787AD66E2BE698A484E /* Pods_mahjongiOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E89E787AD66E2BE698A484E /* Pods_mahjongiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_mahjongiOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		275DEA03B69ACCEE9FFD1C4B /* Pods-mahjongiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mahjongiOS.release.xcconfig"; path = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS.release.xcconfig"; sourceTree = "<group>"; };
 		81245A0F24AD3E48007955D2 /* mahjongiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mahjongiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		81245A1224AD3E48007955D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		81245A1424AD3E48007955D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,7 @@
 		81245A2F24AD3F3F007955D2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		81245A3124AE7344007955D2 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		943F23B425623A0E0040EF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/TileButton.swift; sourceTree = "<group>"; };
+		CACFCE5E02D86E3C60DAFD11 /* Pods-mahjongiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mahjongiOS.debug.xcconfig"; path = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DED2729DEF2B803025925414 /* Pods_mahjongiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		469DC5A92FE54328E6892836 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E89E787AD66E2BE698A484E /* Pods_mahjongiOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		81245A0624AD3E48007955D2 = {
 			isa = PBXGroup;
 			children = (
 				81245A1124AD3E48007955D2 /* mahjongiOS */,
 				81245A1024AD3E48007955D2 /* Products */,
+				84890A3473C247DF6A43113D /* Pods */,
+				469DC5A92FE54328E6892836 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +124,16 @@
 			path = Controller;
 			sourceTree = "<group>";
 		};
+		84890A3473C247DF6A43113D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CACFCE5E02D86E3C60DAFD11 /* Pods-mahjongiOS.debug.xcconfig */,
+				275DEA03B69ACCEE9FFD1C4B /* Pods-mahjongiOS.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -116,9 +141,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongiOS" */;
 			buildPhases = (
+				A496DF4499684425BEE47E06 /* [CP] Check Pods Manifest.lock */,
 				81245A0B24AD3E48007955D2 /* Sources */,
 				81245A0C24AD3E48007955D2 /* Frameworks */,
 				81245A0D24AD3E48007955D2 /* Resources */,
+				D8AFFBDE87F156768D638918 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,6 +201,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A496DF4499684425BEE47E06 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-mahjongiOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D8AFFBDE87F156768D638918 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		81245A0B24AD3E48007955D2 /* Sources */ = {
@@ -338,6 +407,7 @@
 		};
 		81245A2424AD3E4E007955D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CACFCE5E02D86E3C60DAFD11 /* Pods-mahjongiOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -358,6 +428,7 @@
 		};
 		81245A2524AD3E4E007955D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 275DEA03B69ACCEE9FFD1C4B /* Pods-mahjongiOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";

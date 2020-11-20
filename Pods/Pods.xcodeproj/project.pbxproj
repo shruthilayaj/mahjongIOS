@@ -1,0 +1,727 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		30F55EE7F8515A7975661F69E13B2F2D /* MahjongiOSKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA877CF80053939FDE4D8B9900BF3A5 /* MahjongiOSKeys.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		39698A6756A56FA6A3629B1A68651E3E /* Pods-mahjongiOS-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 169BFC6EABB8E96734247C88F4D27668 /* Pods-mahjongiOS-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		528862FE56DFCFEFE4C4601754F975E9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		6A4F687A73FFBE7FCACF92E90B3E8DC8 /* MahjongiOSKeys.m in Sources */ = {isa = PBXBuildFile; fileRef = 5DA877CF80053939FDE4D8B9900BF3A5 /* MahjongiOSKeys.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		6FE2BBA55465B3BEC44E4E822CB308C8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		7C50A6C494018E370E5EF6A9928F6DBB /* Pods-mahjongiOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A783E9A0E4C8BAB6DF7FCC66657B9542 /* Pods-mahjongiOS-dummy.m */; };
+		8A1C679A7055A5B630CD4632CAE3E445 /* Keys-framework-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 059192D6FA0FD10B040E44C1496424A0 /* Keys-framework-dummy.m */; };
+		8F2A861FCE47090F4932B6245E2AC262 /* MahjongiOSKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 58AA85891CD0641888800D3CE3844947 /* MahjongiOSKeys.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A6B4FB942B350458A11B6409059AF2D8 /* MahjongiOSKeys.h in Headers */ = {isa = PBXBuildFile; fileRef = 58AA85891CD0641888800D3CE3844947 /* MahjongiOSKeys.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		DC39AC64ED608F4866575754807DAF06 /* Keys-framework-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 408494C338CBDBF0B75B33B4DB27647A /* Keys-framework-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E1C1B0060C28670E73CE7B047521F3A4 /* Keys-library-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 730321620B2AFB2142E7A1643AFCFCE3 /* Keys-library-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6A9AA5DE2DF6014D4967C821E13ED47E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 038B9A85B25D53B15C36692368AA8E7E;
+			remoteInfo = "Keys-framework";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		059192D6FA0FD10B040E44C1496424A0 /* Keys-framework-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Keys-framework-dummy.m"; sourceTree = "<group>"; };
+		13F33BDD9FB0F258D083D70C0E86378F /* Keys.podspec.json */ = {isa = PBXFileReference; includeInIndex = 1; path = Keys.podspec.json; sourceTree = "<group>"; };
+		167D41D68F4A4194922695C5E6761114 /* Keys-framework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Keys-framework.release.xcconfig"; sourceTree = "<group>"; };
+		169BFC6EABB8E96734247C88F4D27668 /* Pods-mahjongiOS-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-mahjongiOS-umbrella.h"; sourceTree = "<group>"; };
+		1B8637B4889B7A1A0D8097C1759E011B /* Keys-framework.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Keys-framework.modulemap"; sourceTree = "<group>"; };
+		215ACB1BC0461E368CF2F74F728B6C44 /* Keys-library.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Keys-library.debug.xcconfig"; path = "../Keys-library/Keys-library.debug.xcconfig"; sourceTree = "<group>"; };
+		2FC11A2D16874D0871A0A946247E05F2 /* Pods-mahjongiOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mahjongiOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		408494C338CBDBF0B75B33B4DB27647A /* Keys-framework-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Keys-framework-umbrella.h"; sourceTree = "<group>"; };
+		5209C3E63528393A52296F7A6A543A43 /* Keys-library.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Keys-library.release.xcconfig"; path = "../Keys-library/Keys-library.release.xcconfig"; sourceTree = "<group>"; };
+		58AA85891CD0641888800D3CE3844947 /* MahjongiOSKeys.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = MahjongiOSKeys.h; sourceTree = "<group>"; };
+		5B49CE9CE360AC814D68416348D9DE5F /* Pods-mahjongiOS.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-mahjongiOS.modulemap"; sourceTree = "<group>"; };
+		5DA877CF80053939FDE4D8B9900BF3A5 /* MahjongiOSKeys.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = MahjongiOSKeys.m; sourceTree = "<group>"; };
+		69FFC5BB54BFA0D2A386925D0D4147B7 /* Keys-framework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Keys-framework.debug.xcconfig"; sourceTree = "<group>"; };
+		6A291E9E49EF3259CCC28A7923974D01 /* Keys-library-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Keys-library-prefix.pch"; path = "../Keys-library/Keys-library-prefix.pch"; sourceTree = "<group>"; };
+		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		730321620B2AFB2142E7A1643AFCFCE3 /* Keys-library-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Keys-library-dummy.m"; path = "../Keys-library/Keys-library-dummy.m"; sourceTree = "<group>"; };
+		75A9E1E26034051CB6E97A792921BE4B /* Keys-framework-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Keys-framework-Info.plist"; sourceTree = "<group>"; };
+		78A8E830D8F117E802EC9D350B13418D /* Pods-mahjongiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mahjongiOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9002A9E4913B062BE5E14E55A82B0294 /* Keys-framework-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Keys-framework-prefix.pch"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A783E9A0E4C8BAB6DF7FCC66657B9542 /* Pods-mahjongiOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-mahjongiOS-dummy.m"; sourceTree = "<group>"; };
+		B369A8A52E551BE5566D13A654C0BF24 /* Pods_mahjongiOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_mahjongiOS.framework; path = "Pods-mahjongiOS.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B62CED338872EF536910A466267352B5 /* Keys.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Keys.framework; path = "Keys-framework.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4B5FC1A8F44103C20C834E5CAAEC363 /* libKeys-library.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libKeys-library.a"; path = "libKeys-library.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D614ECFA46F16889C9D45B6AAC7347C4 /* Pods-mahjongiOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-mahjongiOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D6A4C7A644651A69363B43FBB4259631 /* Pods-mahjongiOS-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-mahjongiOS-Info.plist"; sourceTree = "<group>"; };
+		E158EF412F6BBF8921F55C97B772C19C /* Pods-mahjongiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-mahjongiOS.release.xcconfig"; sourceTree = "<group>"; };
+		F7A1F9B7ECE4C74FC5188BB5AFD84197 /* Pods-mahjongiOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-mahjongiOS-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0E0395645B93C69E81C49F2D6C8C1B50 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				528862FE56DFCFEFE4C4601754F975E9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		20C1C490F27194A613BDBE4451E7E4F4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6FE2BBA55465B3BEC44E4E822CB308C8 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26730E4B10B82EC6D5FD3D1A4D6148C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2BFA0FD402D9435A0CD469E064C3CF66 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1B8637B4889B7A1A0D8097C1759E011B /* Keys-framework.modulemap */,
+				059192D6FA0FD10B040E44C1496424A0 /* Keys-framework-dummy.m */,
+				75A9E1E26034051CB6E97A792921BE4B /* Keys-framework-Info.plist */,
+				9002A9E4913B062BE5E14E55A82B0294 /* Keys-framework-prefix.pch */,
+				408494C338CBDBF0B75B33B4DB27647A /* Keys-framework-umbrella.h */,
+				69FFC5BB54BFA0D2A386925D0D4147B7 /* Keys-framework.debug.xcconfig */,
+				167D41D68F4A4194922695C5E6761114 /* Keys-framework.release.xcconfig */,
+				730321620B2AFB2142E7A1643AFCFCE3 /* Keys-library-dummy.m */,
+				6A291E9E49EF3259CCC28A7923974D01 /* Keys-library-prefix.pch */,
+				215ACB1BC0461E368CF2F74F728B6C44 /* Keys-library.debug.xcconfig */,
+				5209C3E63528393A52296F7A6A543A43 /* Keys-library.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Keys-framework";
+			sourceTree = "<group>";
+		};
+		567AB35DECC70A273E4E3E6D924772EB /* Pods-mahjongiOS */ = {
+			isa = PBXGroup;
+			children = (
+				5B49CE9CE360AC814D68416348D9DE5F /* Pods-mahjongiOS.modulemap */,
+				D614ECFA46F16889C9D45B6AAC7347C4 /* Pods-mahjongiOS-acknowledgements.markdown */,
+				2FC11A2D16874D0871A0A946247E05F2 /* Pods-mahjongiOS-acknowledgements.plist */,
+				A783E9A0E4C8BAB6DF7FCC66657B9542 /* Pods-mahjongiOS-dummy.m */,
+				F7A1F9B7ECE4C74FC5188BB5AFD84197 /* Pods-mahjongiOS-frameworks.sh */,
+				D6A4C7A644651A69363B43FBB4259631 /* Pods-mahjongiOS-Info.plist */,
+				169BFC6EABB8E96734247C88F4D27668 /* Pods-mahjongiOS-umbrella.h */,
+				78A8E830D8F117E802EC9D350B13418D /* Pods-mahjongiOS.debug.xcconfig */,
+				E158EF412F6BBF8921F55C97B772C19C /* Pods-mahjongiOS.release.xcconfig */,
+			);
+			name = "Pods-mahjongiOS";
+			path = "Target Support Files/Pods-mahjongiOS";
+			sourceTree = "<group>";
+		};
+		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		626A9A6346C206449ADE667E08D9B134 /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				13F33BDD9FB0F258D083D70C0E86378F /* Keys.podspec.json */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		918C67CEDF38AB6FC9603B3803A92E0F /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D88748CC41525D26BA54F731E9DF7003 /* Keys */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		C0CB2609CB8C9664745D72DBAA1B0F46 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				567AB35DECC70A273E4E3E6D924772EB /* Pods-mahjongiOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				918C67CEDF38AB6FC9603B3803A92E0F /* Development Pods */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				D337DCD0C3BDCC0E97D4BC6BE2988F8E /* Products */,
+				C0CB2609CB8C9664745D72DBAA1B0F46 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				578452D2E740E91742655AC8F1636D1F /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D337DCD0C3BDCC0E97D4BC6BE2988F8E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B62CED338872EF536910A466267352B5 /* Keys.framework */,
+				D4B5FC1A8F44103C20C834E5CAAEC363 /* libKeys-library.a */,
+				B369A8A52E551BE5566D13A654C0BF24 /* Pods_mahjongiOS.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D88748CC41525D26BA54F731E9DF7003 /* Keys */ = {
+			isa = PBXGroup;
+			children = (
+				58AA85891CD0641888800D3CE3844947 /* MahjongiOSKeys.h */,
+				5DA877CF80053939FDE4D8B9900BF3A5 /* MahjongiOSKeys.m */,
+				626A9A6346C206449ADE667E08D9B134 /* Pod */,
+				2BFA0FD402D9435A0CD469E064C3CF66 /* Support Files */,
+			);
+			name = Keys;
+			path = CocoaPodsKeys;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0D9C79B8B3CED729DD200F22186638ED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				39698A6756A56FA6A3629B1A68651E3E /* Pods-mahjongiOS-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		689A195DDA6A947EB1D445AD27051F1B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A6B4FB942B350458A11B6409059AF2D8 /* MahjongiOSKeys.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDCF8E7DCECC905B2AB9C5EF4AD0E1CE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DC39AC64ED608F4866575754807DAF06 /* Keys-framework-umbrella.h in Headers */,
+				8F2A861FCE47090F4932B6245E2AC262 /* MahjongiOSKeys.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		038B9A85B25D53B15C36692368AA8E7E /* Keys-framework */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CCAF2D4F6DA3675EE6B322F94F112296 /* Build configuration list for PBXNativeTarget "Keys-framework" */;
+			buildPhases = (
+				DDCF8E7DCECC905B2AB9C5EF4AD0E1CE /* Headers */,
+				B0CEB03B2D3DD798245CC2D7AA6D3F08 /* Sources */,
+				0E0395645B93C69E81C49F2D6C8C1B50 /* Frameworks */,
+				84A6702546D8EB254002AF0E6A015CC8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Keys-framework";
+			productName = "Keys-framework";
+			productReference = B62CED338872EF536910A466267352B5 /* Keys.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		65E787F3071C21E3182560C11E6240C6 /* Pods-mahjongiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F4C88D81C8FCF7BF31C4F90BD7981B0F /* Build configuration list for PBXNativeTarget "Pods-mahjongiOS" */;
+			buildPhases = (
+				0D9C79B8B3CED729DD200F22186638ED /* Headers */,
+				F65B30F9F578B4AC0CD7817E5F97739E /* Sources */,
+				20C1C490F27194A613BDBE4451E7E4F4 /* Frameworks */,
+				1EFED71C5FDD3AD6F45242A1D48FCECC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B8C6495F399BE7EB582F9A6C95788286 /* PBXTargetDependency */,
+			);
+			name = "Pods-mahjongiOS";
+			productName = "Pods-mahjongiOS";
+			productReference = B369A8A52E551BE5566D13A654C0BF24 /* Pods_mahjongiOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		FBDE307EEE6EFAED12F501BC7E7652AA /* Keys-library */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C99A9BA62586559FDA03A3119F8C231E /* Build configuration list for PBXNativeTarget "Keys-library" */;
+			buildPhases = (
+				689A195DDA6A947EB1D445AD27051F1B /* Headers */,
+				A6A3C45ABD420A444D218AA6A9D0CF17 /* Sources */,
+				26730E4B10B82EC6D5FD3D1A4D6148C9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Keys-library";
+			productName = "Keys-library";
+			productReference = D4B5FC1A8F44103C20C834E5CAAEC363 /* libKeys-library.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = D337DCD0C3BDCC0E97D4BC6BE2988F8E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				038B9A85B25D53B15C36692368AA8E7E /* Keys-framework */,
+				FBDE307EEE6EFAED12F501BC7E7652AA /* Keys-library */,
+				65E787F3071C21E3182560C11E6240C6 /* Pods-mahjongiOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1EFED71C5FDD3AD6F45242A1D48FCECC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		84A6702546D8EB254002AF0E6A015CC8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A6A3C45ABD420A444D218AA6A9D0CF17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E1C1B0060C28670E73CE7B047521F3A4 /* Keys-library-dummy.m in Sources */,
+				30F55EE7F8515A7975661F69E13B2F2D /* MahjongiOSKeys.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B0CEB03B2D3DD798245CC2D7AA6D3F08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8A1C679A7055A5B630CD4632CAE3E445 /* Keys-framework-dummy.m in Sources */,
+				6A4F687A73FFBE7FCACF92E90B3E8DC8 /* MahjongiOSKeys.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F65B30F9F578B4AC0CD7817E5F97739E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7C50A6C494018E370E5EF6A9928F6DBB /* Pods-mahjongiOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B8C6495F399BE7EB582F9A6C95788286 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Keys-framework";
+			target = 038B9A85B25D53B15C36692368AA8E7E /* Keys-framework */;
+			targetProxy = 6A9AA5DE2DF6014D4967C821E13ED47E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0DC24319CD687BFDB4EFEEDCC4B604E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5209C3E63528393A52296F7A6A543A43 /* Keys-library.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Keys-library/Keys-library-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Keys;
+				PRODUCT_NAME = "Keys-library";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		68119DD91F388CD40E23E69A2797DF45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167D41D68F4A4194922695C5E6761114 /* Keys-framework.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Keys-framework/Keys-framework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Keys-framework/Keys-framework-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Keys-framework/Keys-framework.modulemap";
+				PRODUCT_MODULE_NAME = Keys;
+				PRODUCT_NAME = Keys;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		6E25B3E7BCB673C7E5F00BBC60D42A9F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 215ACB1BC0461E368CF2F74F728B6C44 /* Keys-library.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Keys-library/Keys-library-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Keys;
+				PRODUCT_NAME = "Keys-library";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6F365D9820E107BA53869A34131972FF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 78A8E830D8F117E802EC9D350B13418D /* Pods-mahjongiOS.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		81B97F97AF1EBED7D34AE500C398FC72 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69FFC5BB54BFA0D2A386925D0D4147B7 /* Keys-framework.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/Keys-framework/Keys-framework-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Keys-framework/Keys-framework-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/Keys-framework/Keys-framework.modulemap";
+				PRODUCT_MODULE_NAME = Keys;
+				PRODUCT_NAME = Keys;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		E5661A124553A459CCAD32B7BD57ED0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E158EF412F6BBF8921F55C97B772C19C /* Pods-mahjongiOS.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				25AD9454612BF454A1E3DC4CD4FA8C6D /* Debug */,
+				CA547D2C7E9A8A153DC2B27FBE00B112 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C99A9BA62586559FDA03A3119F8C231E /* Build configuration list for PBXNativeTarget "Keys-library" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E25B3E7BCB673C7E5F00BBC60D42A9F /* Debug */,
+				0DC24319CD687BFDB4EFEEDCC4B604E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CCAF2D4F6DA3675EE6B322F94F112296 /* Build configuration list for PBXNativeTarget "Keys-framework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				81B97F97AF1EBED7D34AE500C398FC72 /* Debug */,
+				68119DD91F388CD40E23E69A2797DF45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F4C88D81C8FCF7BF31C4F90BD7981B0F /* Build configuration list for PBXNativeTarget "Pods-mahjongiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6F365D9820E107BA53869A34131972FF /* Debug */,
+				E5661A124553A459CCAD32B7BD57ED0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
