@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,6 +19,7 @@
 		81245A3024AD3F3F007955D2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A2F24AD3F3F007955D2 /* Line.swift */; };
 		81245A3224AE7344007955D2 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A3124AE7344007955D2 /* GameDelegate.swift */; };
 		943F23B525623A0E0040EF13 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F23B325623A0E0040EF13 /* TileButton.swift */; };
+		943F24232567C9360040EF13 /* HandsCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F24222567C9360040EF13 /* HandsCard.swift */; };
 		DED2729DEF2B803025925414 /* Pods_mahjongiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E89E787AD66E2BE698A484E /* Pods_mahjongiOS.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		81245A2F24AD3F3F007955D2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		81245A3124AE7344007955D2 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		943F23B425623A0E0040EF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/TileButton.swift; sourceTree = "<group>"; };
+		943F24222567C9360040EF13 /* HandsCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandsCard.swift; sourceTree = "<group>"; };
 		CACFCE5E02D86E3C60DAFD11 /* Pods-mahjongiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-mahjongiOS.debug.xcconfig"; path = "Target Support Files/Pods-mahjongiOS/Pods-mahjongiOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -91,6 +93,7 @@
 				81245A1B24AD3E4E007955D2 /* Assets.xcassets */,
 				81245A1D24AD3E4E007955D2 /* LaunchScreen.storyboard */,
 				81245A2024AD3E4E007955D2 /* Info.plist */,
+				943F24222567C9360040EF13 /* HandsCard.swift */,
 			);
 			path = mahjongiOS;
 			sourceTree = "<group>";
@@ -130,7 +133,6 @@
 				CACFCE5E02D86E3C60DAFD11 /* Pods-mahjongiOS.debug.xcconfig */,
 				275DEA03B69ACCEE9FFD1C4B /* Pods-mahjongiOS.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -142,6 +144,7 @@
 			buildConfigurationList = 81245A2324AD3E4E007955D2 /* Build configuration list for PBXNativeTarget "mahjongiOS" */;
 			buildPhases = (
 				A496DF4499684425BEE47E06 /* [CP] Check Pods Manifest.lock */,
+				943F24252567D1F10040EF13 /* ShellScript */,
 				81245A0B24AD3E48007955D2 /* Sources */,
 				81245A0C24AD3E48007955D2 /* Frameworks */,
 				81245A0D24AD3E48007955D2 /* Resources */,
@@ -203,6 +206,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		943F24252567D1F10040EF13 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" = \"Debug\" ]; then\n\"${HOME}/code/mahjongiOS/mahjongiOS/Script.sh\"\nfi\n";
+		};
 		A496DF4499684425BEE47E06 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -257,6 +277,7 @@
 				81245A1524AD3E48007955D2 /* SceneDelegate.swift in Sources */,
 				943F23B525623A0E0040EF13 /* TileButton.swift in Sources */,
 				81245A3024AD3F3F007955D2 /* Line.swift in Sources */,
+				943F24232567C9360040EF13 /* HandsCard.swift in Sources */,
 				81245A2A24AD3EB3007955D2 /* Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,3 +10,7 @@
 project.xcworkspace/
 xcuserdata/
 Pods/CocoaPodsKeys
+
+# Project files
+mahjongiOS/HandsCard.swift
+mahjongiOS/Script.sh
