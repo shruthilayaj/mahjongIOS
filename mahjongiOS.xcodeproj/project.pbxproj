@@ -19,6 +19,9 @@
 		81245A3024AD3F3F007955D2 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A2F24AD3F3F007955D2 /* Line.swift */; };
 		81245A3224AE7344007955D2 /* GameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81245A3124AE7344007955D2 /* GameDelegate.swift */; };
 		943F23B525623A0E0040EF13 /* TileButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F23B325623A0E0040EF13 /* TileButton.swift */; };
+		943F242C256A9CDA0040EF13 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 943F242B256A9CDA0040EF13 /* Card.swift */; };
+		943F242F256E1C130040EF13 /* Card2020.txt in Resources */ = {isa = PBXBuildFile; fileRef = 943F242E256E1C130040EF13 /* Card2020.txt */; };
+		949850B2257156DE00798EA6 /* Card2020Encrypted.txt in Resources */ = {isa = PBXBuildFile; fileRef = 949850B1257156DE00798EA6 /* Card2020Encrypted.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,10 @@
 		81245A2F24AD3F3F007955D2 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		81245A3124AE7344007955D2 /* GameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameDelegate.swift; sourceTree = "<group>"; };
 		943F23B425623A0E0040EF13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Base; path = Base.lproj/TileButton.swift; sourceTree = "<group>"; };
+		943F242B256A9CDA0040EF13 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		943F242E256E1C130040EF13 /* Card2020.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Card2020.txt; sourceTree = "<group>"; };
+		943F2455257155E30040EF13 /* Encrypt.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Encrypt.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		949850B1257156DE00798EA6 /* Card2020Encrypted.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Card2020Encrypted.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,9 +75,10 @@
 		81245A1124AD3E48007955D2 /* mahjongiOS */ = {
 			isa = PBXGroup;
 			children = (
+				943F2448257149BB0040EF13 /* Encryption */,
+				81245A2624AD3E74007955D2 /* Model */,
 				81245A2824AD3E86007955D2 /* Controller */,
 				81245A2724AD3E7F007955D2 /* View */,
-				81245A2624AD3E74007955D2 /* Model */,
 				81245A1224AD3E48007955D2 /* AppDelegate.swift */,
 				81245A1424AD3E48007955D2 /* SceneDelegate.swift */,
 				81245A1B24AD3E4E007955D2 /* Assets.xcassets */,
@@ -83,11 +91,14 @@
 		81245A2624AD3E74007955D2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				949850B1257156DE00798EA6 /* Card2020Encrypted.txt */,
+				943F242E256E1C130040EF13 /* Card2020.txt */,
 				81245A2924AD3EB3007955D2 /* Game.swift */,
 				81245A2B24AD3EE0007955D2 /* Tile.swift */,
 				81245A2D24AD3F1F007955D2 /* Hand.swift */,
 				81245A2F24AD3F3F007955D2 /* Line.swift */,
 				81245A3124AE7344007955D2 /* GameDelegate.swift */,
+				943F242B256A9CDA0040EF13 /* Card.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +118,14 @@
 				81245A1624AD3E48007955D2 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		943F2448257149BB0040EF13 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				943F2455257155E30040EF13 /* Encrypt.playground */,
+			);
+			path = Encryption;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +160,7 @@
 				TargetAttributes = {
 					81245A0E24AD3E48007955D2 = {
 						CreatedOnToolsVersion = 11.5;
+						LastSwiftMigration = 1220;
 					};
 				};
 			};
@@ -167,7 +187,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				943F242F256E1C130040EF13 /* Card2020.txt in Resources */,
 				81245A1F24AD3E4E007955D2 /* LaunchScreen.storyboard in Resources */,
+				949850B2257156DE00798EA6 /* Card2020Encrypted.txt in Resources */,
 				81245A1C24AD3E4E007955D2 /* Assets.xcassets in Resources */,
 				81245A1A24AD3E48007955D2 /* Main.storyboard in Resources */,
 			);
@@ -187,6 +209,7 @@
 				81245A2C24AD3EE0007955D2 /* Tile.swift in Sources */,
 				81245A1524AD3E48007955D2 /* SceneDelegate.swift in Sources */,
 				943F23B525623A0E0040EF13 /* TileButton.swift in Sources */,
+				943F242C256A9CDA0040EF13 /* Card.swift in Sources */,
 				81245A3024AD3F3F007955D2 /* Line.swift in Sources */,
 				81245A2A24AD3EB3007955D2 /* Game.swift in Sources */,
 			);
@@ -340,6 +363,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
@@ -351,6 +375,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.shruthilayajaganathan.mahjongiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -360,6 +385,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";

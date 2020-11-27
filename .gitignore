@@ -9,4 +9,5 @@
 *.xcuserstate
 project.xcworkspace/
 xcuserdata/
-
+Pods/CocoaPodsKeys
+mahjongiOS/Model/Card2020.txt
