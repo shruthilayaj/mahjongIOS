@@ -1,7 +1,7 @@
 # Uncomment the next line to define a global platform for your project
 
 plugin 'cocoapods-keys', {
-  :project => "Eidolon",
+  :project => "mahjongiOS",
   :keys => [
     "CardSecret"
   ]}
