@@ -36,7 +36,7 @@ struct Game {
         let fourDot = Tile(Rank.four, Suit.dot)
         let joker = Tile(Rank.joker, Suit.joker)
         let southWind = Tile(Rank.south, Suit.wind)
-        let initialTiles = [flower, flower, fourDot, fourDot, fourDot, sixDot, sixDot, joker, twoCrak, twoCrak, eightCrak, southWind, southWind, joker]
+        let initialTiles = [flower, flower, fourDot, fourDot, fourDot, sixDot, sixDot, joker, twoCrak, twoCrak, eightCrak, southWind, joker, joker]
         hands[0].tiles = initialTiles
     }
     
@@ -170,6 +170,9 @@ struct Game {
                         if suit < 3 {
                             let suitEnum = suitCombination[suit]
                             tile = Tile(Rank(rawValue: r)!, suitEnum)
+                        } else if suit == 6 {
+                            // Special case for Soap, when it's meant to be a 0
+                            tile = Tile(Rank(rawValue: r)!, Suit(rawValue: 2)!)
                         } else {
                             tile = Tile(Rank(rawValue: r)!, Suit(rawValue: suit)!)
                         }
@@ -220,7 +223,7 @@ struct Game {
                     let (rank, suit) = (section.ranks, section.suit)
                     var matchTile = true
                     var rankIndex = 0
-                    var tempExposedGroups = exposedGroups
+                    let tempExposedGroups = exposedGroups
                     for exposedGroup in tempExposedGroups {
                         var numJokers = 0
                         let joker = Tile(Rank.joker, Suit.joker)

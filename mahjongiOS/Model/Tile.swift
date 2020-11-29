@@ -9,7 +9,7 @@
 import Foundation
 
 enum Suit: Int {
-    case bam, crak, dot, flower, wind, joker
+    case bam, crak, dot, flower, wind, joker, soap
 
     func simpleDescription() -> String {
         switch self {
@@ -25,6 +25,8 @@ enum Suit: Int {
                 return ""
             case .wind:
                 return "wind"
+            case .soap:
+                return "soap"
         }
     }
 }
