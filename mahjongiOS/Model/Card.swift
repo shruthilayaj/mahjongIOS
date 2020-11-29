@@ -33,7 +33,7 @@ class Card {
             text = Card.encryptDecrypt(text)
             let array = text.components(separatedBy: "\n")
 
-            let rankMap = ["F": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "D": 10, "N": 11, "E": 12, "W": 13, "S": 14]
+            let rankMap = ["F": 0, "1": 1, "2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "D": 10, "N": 11, "E": 12, "W": 13, "S": 14, "0": 10]
 
             for line in array {
                 if line.count == 0 {
@@ -51,7 +51,11 @@ class Card {
                         break lineLoop
                     }
                     var sections: [LineSection] = []
-                    for section in line.components(separatedBy: ",") {
+                    var sectionComponents = line.components(separatedBy: ",")
+                    let lineValue = sectionComponents.popLast()!.components(separatedBy: "|")
+                    let concealed = lineValue[0] == "C"
+                    let points = Int(lineValue[1])
+                    for section in sectionComponents {
                         let section_ = section.components(separatedBy: "|")
                         let ranks = Array(section_[0])
                         let suit = section_[1]
@@ -60,14 +64,13 @@ class Card {
                         sectionRanks.append(contentsOf: repeatElement(rank!, count: ranks.count))
                         sections.append(LineSection(sectionRanks, Int(suit)!))
                     }
-                    cardLines.append(CardLine(sections))
+                    cardLines.append(CardLine(sections, concealed, points!))
                     if !line.contains("a") {
                         break lineLoop  // Breaks if not a consecutive run or like numbers
                     }
                     i += 1
                 }
             }
-            print(cardLines)
             return cardLines
         }
         catch(_){print("error")}
